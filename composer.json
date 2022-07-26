@@ -1,0 +1,15 @@
+{
+    "name": "bqngo/mvc",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ngocbq3",
+            "email": "bqngoc@gmail.com"
+        }
+    ],
+    "require": {}
+}
