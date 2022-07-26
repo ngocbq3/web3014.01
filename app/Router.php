@@ -43,6 +43,7 @@ class Router
             // print_r($handler);
             if ($uri === $handler['path'] && $requestMethod === $handler['method']) {
                 $callback = $handler['handler'];
+                break;
             }
         }
 
