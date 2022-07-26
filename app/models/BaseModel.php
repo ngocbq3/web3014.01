@@ -34,7 +34,10 @@ class BaseModel
         $stmt = $model->conn->prepare($sqlBuilder);
         $stmt->execute();
         $result = $stmt->fetchALl(PDO::FETCH_CLASS, get_class($model));
-        return $result[0];
+        if (count($result) > 0) {
+            return $result[0];
+        }
+        return $model;
     }
 
     public function insert($arrs)
@@ -65,10 +68,13 @@ class BaseModel
         $this->queryBuilder = rtrim($this->queryBuilder, ", ");
         $this->queryBuilder .= " WHERE id=:id";
         //Thêm id vào mảng
-        $arrs['id'] = $this->id;
 
-        $stmt = $this->conn->prepare($this->queryBuilder);
-        $stmt->execute($arrs);
+        if (isset($this->id)) {
+            $arrs['id'] = $this->id;
+            $stmt = $this->conn->prepare($this->queryBuilder);
+            $stmt->execute($arrs);
+        }
+        return null;
     }
 
     public static function where($column, $operator, $value)

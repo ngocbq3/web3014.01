@@ -17,9 +17,9 @@ class ProductController extends Controller
             'detail' => 'Nội dung chi tiết test update'
         ];
 
-        // $product = new ProductModel;
-        // $product->insert($arr);
-        // ProductModel::find(111)->update($arr);
+        $product = new ProductModel;
+        $product->insert($arr);
+        ProductModel::find(1199)->update($arr);
 
         $products = ProductModel::where('price', '>', 90000)->get();
         echo "<pre>";
