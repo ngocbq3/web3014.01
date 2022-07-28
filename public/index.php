@@ -25,5 +25,6 @@ Router::post('/contact', function () {
 Router::get('/home', [HomeController::class, 'index']);
 Router::get('/detail', [HomeController::class, 'show']);
 Router::get('/product/add', [ProductController::class, 'add']);
+Router::post('/product/add', [ProductController::class, 'save']);
 
 Router::run();
