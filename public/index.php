@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . "/../config.php";
 
 use App\Controllers\Controller;
 use App\Controllers\HomeController;
@@ -26,5 +27,7 @@ Router::get('/home', [HomeController::class, 'index']);
 Router::get('/detail', [HomeController::class, 'show']);
 Router::get('/product/add', [ProductController::class, 'add']);
 Router::post('/product/add', [ProductController::class, 'save']);
+Router::get('/product/abc/show', [ProductController::class, 'show']);
+Router::get('/product/delete', [ProductController::class, 'delete']);
 
 Router::run();

@@ -102,4 +102,11 @@ class BaseModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, get_class($this));
     }
+
+    public function destroy($id)
+    {
+        $queryBuilder = "Delete From $this->tableName WHERE id=$id";
+        $stmt = $this->conn->prepare($queryBuilder);
+        return $stmt->execute();
+    }
 }

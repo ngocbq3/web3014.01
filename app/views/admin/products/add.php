@@ -12,8 +12,18 @@
     <form action="/product/add" method="post" enctype="multipart/form-data">
 
         Tên sản phẩm: <input type="text" name="name">
+        <?php if (isset($errors['name'])) : ?>
+            <span style="color: red;">
+                <?= $errors['name'] ?>
+            </span>
+        <?php endif ?>
         <br>
         Ảnh đại diện: <input type="file" name="image">
+        <?php if (isset($errors['image'])) : ?>
+            <span style="color: red;">
+                <?= $errors['image'] ?>
+            </span>
+        <?php endif ?>
         <br>
         Danh mục:
         <select name="cate_id">
@@ -24,9 +34,19 @@
                 </option>
             <?php endforeach ?>
         </select>
+        <?php if (isset($errors['cate_id'])) : ?>
+            <span style="color: red;">
+                <?= $errors['cate_id'] ?>
+            </span>
+        <?php endif ?>
         <br>
 
         Giá: <input type="number" name="price" id="">
+        <?php if (isset($errors['price'])) : ?>
+            <span style="color: red;">
+                <?= $errors['price'] ?>
+            </span>
+        <?php endif ?>
         <br>
 
         Mô tả ngắn
