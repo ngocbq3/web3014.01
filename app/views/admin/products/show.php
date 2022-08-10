@@ -32,7 +32,7 @@
                 <td><?= $product->price ?></td>
                 <td><?= $product->views ?></td>
                 <td>
-                    <a href="/product/edit?id=<?= $product->id ?>">Edit</a>
+                    <a href="/product-edit?id=<?= $product->id ?>">Edit</a>
                     <a href="/product/delete?id=<?= $product->id ?>">Delete</a>
                 </td>
             </tr>

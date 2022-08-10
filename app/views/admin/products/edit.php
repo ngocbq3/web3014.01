@@ -14,15 +14,18 @@ if (isset($request)) {
 </head>
 
 <body>
-    <form action="/product/add" method="post" enctype="multipart/form-data">
-
-        Tên sản phẩm: <input type="text" name="name" value="<?= $name ?? '' ?>">
+    <form action="/product-edit" method="post" enctype="multipart/form-data">
+        <!-- ID -->
+        <input type="hidden" name="id" value="<?= $product->id ?>">
+        Tên sản phẩm: <input type="text" name="name" value="<?= $product->name ?>">
         <?php if (isset($errors['name'])) : ?>
             <span style="color: red;">
                 <?= $errors['name'] ?>
             </span>
         <?php endif ?>
         <br>
+        <img src="images/<?= $product->image ?>" width="100" alt="">
+        <input type="hidden" name="image" value="<?= $product->image ?>">
         Ảnh đại diện: <input type="file" name="image">
         <?php if (isset($errors['image'])) : ?>
             <span style="color: red;">
@@ -34,7 +37,7 @@ if (isset($request)) {
         <select name="cate_id">
             <option value="0">Chọn danh mục</option>
             <?php foreach ($categories as $cate) : ?>
-                <option value="<?= $cate->id ?>" <?= isset($cate_id) ? ($cate_id == $cate->id) ? 'selected' : '' : '' ?>>
+                <option value="<?= $cate->id ?>" <?= ($product->cate_id == $cate->id) ? 'selected' : '' ?>>
                     <?= $cate->cate_name ?>
                 </option>
             <?php endforeach ?>
@@ -46,7 +49,7 @@ if (isset($request)) {
         <?php endif ?>
         <br>
 
-        Giá: <input type="number" name="price" value="<?= $price ?? '' ?>">
+        Giá: <input type="number" name="price" value="<?= $product->price ?>">
         <?php if (isset($errors['price'])) : ?>
             <span style="color: red;">
                 <?= $errors['price'] ?>
@@ -56,11 +59,11 @@ if (isset($request)) {
 
         Mô tả ngắn
         <br>
-        <textarea name="short_desc" cols="100" rows="5"><?= $short_desc ?? '' ?></textarea>
+        <textarea name="short_desc" cols="100" rows="5"><?= $product->short_desc ?></textarea>
         <br>
 
         Nội dung <br>
-        <textarea name="detail" cols="100" rows="10"><?= $detail ?? '' ?></textarea>
+        <textarea name="detail" cols="100" rows="10"><?= $detail ?? $product->detail ?></textarea>
         <br>
 
         <button type="submit">Lưu</button>

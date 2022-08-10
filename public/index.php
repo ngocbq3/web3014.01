@@ -27,7 +27,9 @@ Router::get('/home', [HomeController::class, 'index']);
 Router::get('/detail', [HomeController::class, 'show']);
 Router::get('/product/add', [ProductController::class, 'add']);
 Router::post('/product/add', [ProductController::class, 'save']);
-Router::get('/product/abc/show', [ProductController::class, 'show']);
+Router::get('/product-show', [ProductController::class, 'show']);
 Router::get('/product/delete', [ProductController::class, 'delete']);
+Router::get('/product-edit', [ProductController::class, 'edit']);
+Router::post('/product-edit', [ProductController::class, 'store']);
 
 Router::run();
